@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/Deansquirrel/goEncodeToolsWs/global"
 	"github.com/Deansquirrel/goEncodeToolsWs/object"
+	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris"
 )
 
@@ -22,8 +23,16 @@ func NewRouterBase(app *iris.Application) *base {
 }
 
 func (base *base) AddBase() {
-	base.app.Get("/version", base.version)
-	base.app.Post("/code", base.code)
+	crs := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"}, //允许通过的主机名称
+		AllowCredentials: true,
+	})
+	v := base.app.Party("/", crs).AllowMethods(iris.MethodOptions)
+	{
+		v.Get("/version", base.version)
+		v.Post("/code", base.code)
+	}
+
 }
 
 func (base *base) version(ctx iris.Context) {
