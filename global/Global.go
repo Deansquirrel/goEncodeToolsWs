@@ -8,7 +8,7 @@ import (
 const (
 	//PreVersion = "0.0.1 Build20190531"
 	//TestVersion = "0.0.0 Build20190101"
-	Version = "0.0.0 Build20190101"
+	Version = "0.0.2 Build20190531"
 )
 
 var Ctx context.Context
