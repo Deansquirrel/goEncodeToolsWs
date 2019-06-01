@@ -9,7 +9,7 @@ type VersionResponse struct {
 
 //================================================================
 type MessageRequest struct {
-	RequestText string `json:"requettext"`
+	RequestText string `json:"requesttext"`
 	RequestKey  string `json:"requestkey"`
 	OprType     int    `json:"oprtype"` //1-加密，2-解密
 }
